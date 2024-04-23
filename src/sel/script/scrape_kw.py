@@ -4,6 +4,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
+
 from selenium.common.exceptions import (
     ElementNotVisibleException,
     StaleElementReferenceException,
@@ -18,18 +21,20 @@ import os
 from selenium_stealth import stealth
 
 
-file_path = os.path.join(os.pardir, "proxy_utils", "valid_proxy_list.txt")
-with open(file_path, "r") as f:
-    # read valid proxies into array
-    proxies = f.read().split("\n")
-
+# file_path = os.path.join(os.pardir, "proxy_utils", "valid_proxy_list.txt")
+# with open(file_path, "r") as f:
+#     # read valid proxies into array
+#     proxies = f.read().split("\n")
+proxies = []
 options = webdriver.ChromeOptions()
 options.add_argument("start-maximized")
 options.add_experimental_option("excludeSwitches", ["enable-automation"])
 options.add_experimental_option("useAutomationExtension", False)
 options.add_experimental_option("detach", True)
-driver = webdriver.Chrome(options=options)
-
+# driver = webdriver.Chrome(options=options)
+driver = webdriver.Chrome(
+    service=Service(ChromeDriverManager().install()), options=options
+)
 
 stealth(
     driver,
@@ -319,7 +324,7 @@ def getlistingURLs(etsy_root_search_url, num_pages=3):
 
     try:
         # add proxy to chrome options
-        options.add_argument(f"--proxy-server={proxies[proxy_counter]}")
+        # options.add_argument(f"--proxy-server={proxies[proxy_counter]}")
         # #navigate to root search URL
         # driver.get(etsy_root_search_url)
         # root url counts as page 1
@@ -346,7 +351,7 @@ def getlistingURLs(etsy_root_search_url, num_pages=3):
 
                     # get next proxy in list
                     proxy_counter += 1
-                    options.add_argument(f"--proxy-server={proxies[proxy_counter]}")
+                    # options.add_argument(f"--proxy-server={proxies[proxy_counter]}")
                     # reset pg count for new proxy
                     proxy_pg_count = 0
 
@@ -402,7 +407,7 @@ def getlistingInfos(etsy_root_search_url, num_pages=3):
 
     try:
         # add proxy to chrome options
-        options.add_argument(f"--proxy-server={proxies[proxy_counter]}")
+        # options.add_argument(f"--proxy-server={proxies[proxy_counter]}")
         # #navigate to root search URL
         # driver.get(etsy_root_search_url)
         # root url counts as page 1
@@ -429,7 +434,7 @@ def getlistingInfos(etsy_root_search_url, num_pages=3):
 
                     # get next proxy in list
                     proxy_counter += 1
-                    options.add_argument(f"--proxy-server={proxies[proxy_counter]}")
+                    # options.add_argument(f"--proxy-server={proxies[proxy_counter]}")
                     # reset pg count for new proxy
                     proxy_pg_count = 0
 
