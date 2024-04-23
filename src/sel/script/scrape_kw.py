@@ -20,7 +20,10 @@ from selenium.webdriver.chrome.service import Service
 
 from webdriver_manager.chrome import ChromeDriverManager
 
+# Specify a specific version of the Chrome WebDriver
+webdriver_version = "latest"  # or a specific version like "90.0.4430.24"
 
+service = Service(ChromeDriverManager(version=webdriver_version).install())
 # file_path = os.path.join(os.pardir, "proxy_utils", "valid_proxy_list.txt")
 # with open(file_path, "r") as f:
 #     # read valid proxies into array
@@ -34,9 +37,7 @@ options.add_experimental_option("useAutomationExtension", False)
 options.add_experimental_option("detach", True)
 # driver = webdriver.Chrome(options=options)
 
-driver = webdriver.Chrome(
-    service=Service(ChromeDriverManager().install()), options=options
-)
+driver = webdriver.Chrome(service=service, options=options)
 
 stealth(
     driver,
