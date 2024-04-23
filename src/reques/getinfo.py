@@ -1,5 +1,3 @@
-from EtsyScraperLib import Product
-
 # https://github.com/v0rkath/EtsyScraperLib
 
 # print(a_product.generate_json())

@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 
 from src.dtos.ISayHelloDto import ISayHelloDto
-from EtsyScraperLib import Product
 from src.utils import *
 from src.sel.script.scrape_kw import *
 
