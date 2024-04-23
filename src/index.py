@@ -26,8 +26,9 @@ async def hello_message(dto: ISayHelloDto):
 async def getEtsySel(keyword: str):
     search_url = getSearchUrl(keyword)
     counts = getPageCounts(search_url)
-    urls = getlistingURLs(search_url, num_pages=counts)
-    infos = getlistingInfos(search_url, num_pages=counts)
+    driver = getChomium()
+    urls = getlistingURLs(driver, search_url, num_pages=counts)
+    infos = getlistingInfos(driver, search_url, num_pages=counts)
     return {"links": urls, "json": infos}
 
 
