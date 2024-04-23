@@ -6,3 +6,4 @@ pydantic~=1.10.4
 selenium
 selenium_stealth
 requests
+beautifulsoup4
