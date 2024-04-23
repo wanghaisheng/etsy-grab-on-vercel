@@ -1,10 +1,7 @@
 from EtsyScraperLib import Product
 
 # https://github.com/v0rkath/EtsyScraperLib
-a_product = Product("https://www.etsy.com/uk/listing/1479000279/item-title-1")
-a_product.connect()
 
-a_product.get_all_data()
 # print(a_product.generate_json())
 
 # ##### Output #####
@@ -19,3 +16,30 @@ a_product.get_all_data()
 #         "https://i.etsystatic.com/39539439/r/il/6f0539/5323848409/il_1588xN.5323848888.jpg",
 #     ],
 # }
+
+from src.utils import *
+
+
+def getListingsInfo(url, counts):
+
+    a_product = Product("https://www.etsy.com/uk/listing/1479000279/item-title-1")
+    a_product.connect()
+
+    a_product.get_all_data()
+
+    # return {"message": f"Hello {keyword}"}
+    return a_product.generate_json()
+
+
+from src.utils import *
+
+
+def getListingsUrl(url, counts):
+
+    a_product = Product("https://www.etsy.com/uk/listing/1479000279/item-title-1")
+    a_product.connect()
+
+    a_product.get_all_data()
+
+    # return {"message": f"Hello {keyword}"}
+    return a_product.generate_json()

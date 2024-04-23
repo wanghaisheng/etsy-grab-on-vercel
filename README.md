@@ -104,3 +104,12 @@ Or buy me a coffee 🙌🏾
 
 Copyright © 2024 [Hebert F Barros](https://github.com/wanghaisheng).<br />
 This project is [MIT](LICENSE) licensed.
+
+## issues
+
+https://github.com/orgs/vercel/discussions/6287#discussioncomment-8932365
+
+https://vercel.com/docs/functions/runtimes/node-js#node.js-version
+
+> Make sure you change the Node version in Project Settings rather than in the vercel.json config 🙏
+> Even with just Python, please set the Node.js version to 18.x in project settings 🙏
