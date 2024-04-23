@@ -22,8 +22,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 # Specify a specific version of the Chrome WebDriver
 webdriver_version = "latest"  # or a specific version like "90.0.4430.24"
-
-service = Service(ChromeDriverManager(version=webdriver_version).install())
+print(ChromeDriverManager(driver_version="120").install())
+service = Service(ChromeDriverManager(driver_version="120").install())
 # file_path = os.path.join(os.pardir, "proxy_utils", "valid_proxy_list.txt")
 # with open(file_path, "r") as f:
 #     # read valid proxies into array
