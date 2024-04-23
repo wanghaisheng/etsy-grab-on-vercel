@@ -15,6 +15,19 @@ import time
 import json
 import os
 
+from selenium_stealth import stealth
+
+from selenium.webdriver.chrome.service import Service
+
+# from webdriver_manager.chrome import ChromeDriverManager
+
+# Specify a specific version of the Chrome WebDriver
+webdriver_version = "latest"  # or a specific version like "90.0.4430.24"
+# print(ChromeDriverManager(driver_version="120").install())
+# service = Service(ChromeDriverManager(driver_version="120").install())
+
+
+service = Service()
 
 # file_path = os.path.join(os.pardir, "proxy_utils", "valid_proxy_list.txt")
 # with open(file_path, "r") as f:
@@ -23,7 +36,7 @@ import os
 proxies = []
 
 
-options = webdriver.EdgeOptions()
+options = webdriver.ChromeOptions()
 options.add_argument("--headless=new")
 options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
@@ -37,13 +50,19 @@ options.add_argument("start-maximized")
 options.add_experimental_option("excludeSwitches", ["enable-automation"])
 options.add_experimental_option("useAutomationExtension", False)
 options.add_experimental_option("detach", True)
-# driver = webdriver.Chrome(options=options)
 
-options.add_argument("--headless")
-
-options.use_chromium = True
-
-driver = webdriver.Edge(options=options)
+driver = webdriver.Chrome(options=options)
+stealth(
+    driver,
+    user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
+    languages=["en-US", "en"],
+    vendor="Google Inc.",
+    platform="Win32",
+    webgl_vendor="Intel Inc.",
+    renderer="Intel Iris OpenGL Engine",
+    fix_hairline=False,
+    run_on_insecure_origins=False,
+)
 
 
 # UTIL AND NAV FUNCTIONS
