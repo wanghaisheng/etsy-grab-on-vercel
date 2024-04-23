@@ -1,7 +1,9 @@
 from fastapi import FastAPI
 
 from src.dtos.ISayHelloDto import ISayHelloDto
-from src.utils import *
+from src.etsyHelper import *
+from src.webdriverHelper import *
+
 from src.sel.script.scrape_kw import *
 
 app = FastAPI()
