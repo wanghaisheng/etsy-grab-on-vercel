@@ -16,6 +16,8 @@ import json
 import os
 
 from selenium_stealth import stealth
+from selenium.webdriver.chrome.service import Service
+
 from webdriver_manager.chrome import ChromeDriverManager
 
 
@@ -31,8 +33,10 @@ options.add_experimental_option("excludeSwitches", ["enable-automation"])
 options.add_experimental_option("useAutomationExtension", False)
 options.add_experimental_option("detach", True)
 # driver = webdriver.Chrome(options=options)
-driver = webdriver.Chrome(ChromeDriverManager().install(), options)
 
+driver = webdriver.Chrome(
+    service=Service(ChromeDriverManager().install()), options=options
+)
 
 stealth(
     driver,
