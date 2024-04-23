@@ -1,4 +1,4 @@
-from src.reques.product import Product
+from EtsyScraperLib import Product
 
 # https://github.com/v0rkath/EtsyScraperLib
 
