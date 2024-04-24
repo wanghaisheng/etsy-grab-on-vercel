@@ -47,7 +47,7 @@ def getChomium():
     os.remove("/tmp/chromium.tar")
     webdriver_path = os.path.join("/tmp", "chromium-v123.0.1-pack", "chromedriver")
 
-    from selenium.webdriver.chrom.service import Service
+    from selenium.webdriver.chrome.service import Service
 
     # Create a Service object with the WebDriver path
     service = Service(webdriver_path)
