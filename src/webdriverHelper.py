@@ -45,10 +45,8 @@ def getChomium():
     os.remove("/tmp/chromium.tar")
 
     # Get the directory name of the extracted package
-    extracted_dir = next(os.walk("/tmp"))[1][0]
-
     # Construct the path to the chromedriver executable
-    webdriver_path = os.path.join("/tmp", extracted_dir, "chromedriver")
+    webdriver_path = os.path.join("/tmp/chromium", "chromedriver")
 
     from selenium.webdriver.chrome.service import Service
 
