@@ -1,10 +1,8 @@
 from fastapi import FastAPI
 
 from src.dtos.ISayHelloDto import ISayHelloDto
-from src.etsyHelper import *
-from src.webdriverHelper import *
 
-from src.sel.script.scrape_kw import *
+from DrissionPage import ChromiumOptions, ChromiumPage
 
 app = FastAPI()
 
@@ -24,20 +22,29 @@ async def hello_message(dto: ISayHelloDto):
     return {"message": f"Hello {dto.message}"}
 
 
-@app.get("/etsy/{keyword}")
-async def getEtsySel(keyword: str):
-    search_url = getSearchUrl(keyword)
-    counts = getPageCounts(search_url)
-    driver = getChomium()
-    urls = getlistingURLs(driver, search_url, num_pages=counts)
-    infos = getlistingInfos(driver, search_url, num_pages=counts)
-    return {"links": urls, "json": infos}
+@app.get("/ahref/kd/{keyword}")
+async def getAhrefKD(keyword: str):
+
+    co = ChromiumOptions().auto_port()
+    page1 = ChromiumPage(co)
+
+    url = "https://ahrefs.com/keyword-difficulty/"
+    page1.get(url)
+    # keyword = "remini.ai"
+    page1.ele("@placeholder=Enter keyword").input(keyword)
+
+    # 点击登录按钮
+    page1.ele("text=Check keyword").click()
+    kd = page1.ele(".css-16bvajg-chartValue").text
+
+    kds = page1.ele(".css-1wi5h2-row css-1crciv5 css-6rbp9c").text
+    #     print(kd)
+    #     print(kds)
+
+    return {"keyword": keyword, "kd": kd, "des": kds}
 
 
-@app.get("/etsy/req/{keyword}")
-async def getEtsyReq(keyword: str):
-    search_url = getSearchUrl(keyword)
-    counts = getPageCounts(search_url)
-    urls = getlistingURLs(search_url, num_pages=counts)
-    infos = getlistingInfos(search_url, num_pages=counts)
-    return {"links": urls, "json": infos}
+@app.get("/domain/da/{domain}")
+async def getDomainDA(domain: str):
+    data = check_DA(domain)
+    return data

@@ -8,4 +8,4 @@ selenium_stealth
 requests
 beautifulsoup4
 requests-html
-chromedriver-py==124.0.6367.78
+DrissionPage
