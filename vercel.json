@@ -1,5 +1,5 @@
 {
-  "installCommand": "dnf install -y google-chrome-stable",
+  "installCommand": "pnpm install puppeteer-core",
   "devCommand": "uvicorn main:app --host 0.0.0.0 --port 3000",
   "builds": [
     {
