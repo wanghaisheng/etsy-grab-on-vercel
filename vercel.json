@@ -1,4 +1,5 @@
 {
+  "installCommand": "dnf install -y google-chrome-stable",
   "devCommand": "uvicorn main:app --host 0.0.0.0 --port 3000",
   "builds": [
     {
@@ -7,8 +8,7 @@
       "config": {
         "maxLambdaSize": "15mb",
         "runtime": "python3.8"
-      },
-      "installCommand": "dnf install -y google-chrome-stable"
+      }
     }
   ],
   "routes": [
