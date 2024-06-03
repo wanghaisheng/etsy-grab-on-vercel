@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from src.dtos.ISayHelloDto import ISayHelloDto
 
 from DrissionPage import ChromiumOptions, ChromiumPage
+from src.checkDA import check_DA
 
 app = FastAPI()
 
